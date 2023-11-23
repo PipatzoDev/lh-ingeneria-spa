@@ -1,0 +1,287 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="filter cm-content-box box-primary">
+                <div class="content-title">
+                    <div class="cpa">
+                        <i class="fa-sharp fa-solid fa-filter me-2"></i>Mes Actual : 
+                        {% if mes == 1 %}
+                            Enero
+                        {% elif mes == 2 %}
+                        Febrero
+                        {% elif mes == 3 %}
+                        Marzo
+                        {% elif mes == 4 %}
+                        April
+                        {% elif mes == 5 %}
+                        Mayo
+                        {% elif mes == 6 %}
+                        Junio
+                        {% elif mes == 7 %}
+                        Julio
+                        {% elif mes == 8 %}
+                        Agosto
+                        {% elif mes == 9 %}
+                        Septiembre
+                        {% elif mes == 10 %}
+                        Octubre
+                        {% elif mes == 11 %}
+                        Noviembre
+                        {% elif mes == 12 %}
+                        Diciembre
+                        {% else %}
+                        {{mes}}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="cm-content-body form excerpt">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-3  col-sm-6 mb-3 mb-xl-0">
+                                <form method="get" id="formbuscarasistencia" action="{% url 'buscarasistencia' %}">
+                                    {% csrf_token %}
+                                    <select name="mes" id="mes" class="form-control default-select dashboard-select-2 h-auto wide" aria-label="Default select example">
+                                        <option value="1"{% if mes == 1 %}selected{% endif %}>Enero</option>
+                                        <option value="2"{% if mes == 2 %}selected{% endif %}>Febrero</option>
+                                        <option value="3"{% if mes == 3 %}selected{% endif %}>Marzo</option>
+                                        <option value="4"{% if mes == 4 %}selected{% endif %}>Abril</option>
+                                        <option value="5"{% if mes == 5 %}selected{% endif %}>Mayo</option>
+                                        <option value="6"{% if mes == 6 %}selected{% endif %}>Junio</option>
+                                        <option value="7"{% if mes == 7 %}selected{% endif %}>Julio</option>
+                                        <option value="8"{% if mes == 8 %}selected{% endif %}>Agosto</option>
+                                        <option value="9"{% if mes == 9 %}selected{% endif %}>Septiembre</option>
+                                        <option value="10"{% if mes == 10 %}selected{% endif %}>Octubre</option>
+                                        <option value="11"{% if mes == 11 %}selected{% endif %}>Noviembre</option>
+                                        <option value="12"{% if mes == 12 %}selected{% endif %}>Diciembre</option>
+                                    </select>
+                            </div>
+                            <div class="col-xl-3 col-sm-6">
+                                <input type="year" class="form-control mb-xl-0 mb-3" name="anio" id="anio" value="{{ anio_actual|striptags|linebreaksbr }}">
+                            </div>
+                            <div class="col-xl-3 col-sm-6">
+                                <button class="btn btn-info" title="Click here to Search" type="submit"><i class="fa fa-search me-1"></i>Buscar</button>
+                                <a  href="{% url 'inicio' %}" class="btn btn-danger" >Volver</a>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="table-responsive active-projects">
+                <div class="tbl-caption" style=" position: absolute;left:10px">
+                    <h4 class="heading mb-0">Asistencia</h4>
+                    
+                </div>
+                
+                
+            
+                <br><br><br>
+                <table id="attendance-tbl" class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Rut
+                            </th>
+                            <th>
+                                Nombre Empleado
+                            </th>
+                                {% for day in table_data.0 %}
+                                {% if day.1 %}
+                                    <th><span>{{ day.1 }}</span>
+                                        <span class="text-primary">
+                                    {% if day.0 == "Monday"%}
+                                        <p>Lu</p></th>
+                                    {% elif  day.0 == "Tuesday" %}
+                                        <p>Ma</p></th>
+                                    {% elif  day.0 == "Wednesday" %}
+                                        <p>Mi</p></th>
+                                    {% elif  day.0 == "Thursday" %}
+                                        <p>Ju</p></th>
+                                    {% elif  day.0 == "Friday" %}
+                                        <p>Vi</p></th>
+                                    {% elif  day.0 == "Saturday" %}
+                                        <p>Sa</p></th>
+                                    {% elif  day.0 == "Sunday" %}
+                                        <p>Do</p></th>
+                                    {% endif %}
+                                        </span>
+                                {% endif%}
+                                {% endfor %}
+                                {% for day in table_data.1 %}
+                                    <th><span>{{ day.1 }}</span>
+                                        <span class="text-primary">
+                                    {% if day.0 == "Monday"%}
+                                        <p>Lu</p></th>
+                                    {% elif  day.0 == "Tuesday" %}
+                                        <p>Ma</p></th>
+                                    {% elif  day.0 == "Wednesday" %}
+                                        <p>Mi</p></th>
+                                    {% elif  day.0 == "Thursday" %}
+                                        <p>Ju</p></th>
+                                    {% elif  day.0 == "Friday" %}
+                                        <p>Vi</p></th>
+                                    {% elif  day.0 == "Saturday" %}
+                                        <p>Sa</p></th>
+                                    {% elif  day.0 == "Sunday" %}
+                                        <p>Do</p></th>
+                                    {% endif %}
+                                        </span>
+                                {% endfor %}
+                                {% for day in table_data.2 %}
+                                    <th><span>{{ day.1 }}</span>
+                                        <span class="text-primary">
+                                    {% if day.0 == "Monday"%}
+                                        <p>Lu</p></th>
+                                    {% elif  day.0 == "Tuesday" %}
+                                   <p>Ma</p></span></th>
+                                    {% elif  day.0 == "Wednesday" %}
+                                        <p>Mi</p></th>
+                                    {% elif  day.0 == "Thursday" %}
+                                        <p>Ju</p></th>
+                                    {% elif  day.0 == "Friday" %}
+                                        <p>Vi</p></th>
+                                    {% elif  day.0 == "Saturday" %}
+                                        <p>Sa</p></th>
+                                    {% elif  day.0 == "Sunday" %}
+                                        <p>Do</p></th>
+                                    {% endif %}
+                                        </span>
+                                {% endfor %}
+                                {% for day in table_data.3 %}
+                                    <th><span>{{ day.1 }}</span>
+                                        <span class="text-primary">
+                                    {% if day.0 == "Monday"%}
+                                        <p>Lu</p></th>
+                                    {% elif  day.0 == "Tuesday" %}
+                                        <p>Ma</p></th>
+                                    {% elif  day.0 == "Wednesday" %}
+                                        <p>Mi</p></th>
+                                    {% elif  day.0 == "Thursday" %}
+                                        <p>Ju</p></th>
+                                    {% elif  day.0 == "Friday" %}
+                                        <p>Vi</p></th>
+                                    {% elif  day.0 == "Saturday" %}
+                                        <p>Sa</p></th>
+                                    {% elif  day.0 == "Sunday" %}
+                                        <p>Do</p></th>
+                                    {% endif %}
+                                        </span>
+                                {% endfor %}
+                                {% for day in table_data.4 %}
+                                {% if day.1 %}
+                                    <th><span>{{ day.1 }}</span>
+                                        <span class="text-primary">
+                                    {% if day.0 == "Monday"%}
+                                    <p>Lu</p></th>
+                                    {% elif  day.0 == "Tuesday" %}
+                                        <p>Ma</p></th>
+                                    {% elif  day.0 == "Wednesday" %}
+                                        <p>Mi</p></th>
+                                    {% elif  day.0 == "Thursday" %}
+                                        <p>Ju</p></th>
+                                    {% elif  day.0 == "Friday" %}
+                                        <p>Vi</p></th>
+                                    {% elif  day.0 == "Saturday" %}
+                                        <p>Sa</p></th>
+                                    {% elif  day.0 == "Sunday" %}
+                                        <p>Do</p></th>
+                                    {% endif %}
+                                        </span>
+                                {% endif%}
+                                {% endfor %}
+                                {% for day in table_data.5 %}
+                                {% if day.1 %}
+                                    <th><span>{{ day.1 }}</span>
+                                        <span class="text-primary">
+                                    {% if day.0 == "Monday"%}
+                                    <p>Lu</p></th>
+                                    {% elif  day.0 == "Tuesday" %}
+                                        <p>Ma</p></th>
+                                    {% elif  day.0 == "Wednesday" %}
+                                        <p>Mi</p></th>
+                                    {% elif  day.0 == "Thursday" %}
+                                        <p>Ju</p></th>
+                                    {% elif  day.0 == "Friday" %}
+                                        <p>Vi</p></th>
+                                    {% elif  day.0 == "Saturday" %}
+                                        <p>Sa</p></th>
+                                    {% elif  day.0 == "Sunday" %}
+                                        <p>Do</p></th>
+                                    {% endif %}
+                                        </span>
+                                {% endif%}
+                                {% endfor %}
+                            
+                                    <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                    
+                        {% for fila in tabla_asistencia %}
+                        <tr>
+                            <td>{{fila.rut}}</td>
+                            <td>
+                                <div class="products">
+                                    {% if fila.imagen.url is not None %}
+                                    <img src="{{ fila.imagen.url }}" class="avatar avatar-md" alt="">
+                                    {% else %}
+                                    <img src="{% static 'images/contacts/pic2.jpg'%}" class="avatar avatar-md" alt="">
+                                    {% endif %}
+                        
+                        
+                                    <div>
+                                        <h6>{{ fila.nombre }}</h6>
+                                        <span>{{fila.apellido}}</span>	
+                                    </div>	
+                                </div>
+                            </td>
+                            {% for asistencia in fila.asistencias %}
+                            <td>{% if asistencia == '✔' %}
+                                    <span class="text-success">✔</span>
+                                    {% elif asistencia == '✘'%}
+                                    <span class="text-danger">✘</span>
+                                    {% elif asistencia == 'J'%}
+                                    <span class="text-primary">J</i></span>
+                                    {% else %}
+                                    <span class="text-primary">●</i></span>
+                                {% endif %}
+                            </td>
+                            {% endfor %}
+                            <td>{{ fila.dias_asistidos }}</td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>	
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+	document.getElementById("formbuscarasistencia").onsubmit = function(event) {
+		var inputValor = document.getElementById("anio").value;
+		var anioActual = new Date().getFullYear();
+		if (inputValor.trim() === "" || inputValor > anioActual) {
+			alert("El año no puede estar vacío o ingresar un año mayor al actual "+ anioActual);
+			event.preventDefault(); // Evitar que el formulario se envíe
+		}
+		
+	};	
+</script>
+{% endblock %}

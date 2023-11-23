@@ -1,0 +1,118 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block content %}
+<!--**********************************
+            Content body start
+        ***********************************-->
+			<div class="container-fluid">
+				<!-- row -->
+				<div class="row">
+					<div class="col-xl-3 col-lg-4">
+						<div class="clearfix">
+							<div class="card card-bx profile-card author-profile m-b30">
+								<div class="card-body">
+									<div class="p-5">
+										<div class="author-profile">
+											<div class="author-media">
+												{% if empleado.imageEmp.url is not None %}
+													<img src="{{ empleado.imageEmp.url }}">
+													{% else %}
+													<img src="{% static 'images/contacts/pic2.jpg'%}" >
+													{% endif %}
+												
+											</div>
+											<div class="author-info">
+												<h6 class="title">{{empleado.nombre}}</h6>
+												<span>{{empleado.apellido}}</span>
+											</div>
+										</div>
+									</div>
+								
+								</div>
+								<div class="card-footer">
+									<div class="input-group mb-3">
+										<div class="form-control rounded text-center bg-white">Cosas por rellenar</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="form-control rounded text-center bg-white">Cosas por rellenar</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-9 col-lg-8">
+						<div class="card profile-card card-bx m-b30">
+							<div class="card-header">
+								<h6 class="title">Modificando informacion del Empleado</h6>
+							</div>
+							<form class="profile-form" method='POST' enctype="multipart/form-data">
+                                {% csrf_token %}
+								<div class="card-body">
+									<div class="col-sm-2 m-b30">
+										<label class="form-label">Rut <span class="text-danger">*</span></label>
+										<span class="badge bg-primary  border-0">
+											<input type="hidden" {{form.rut}}
+											{{empleado.rut}}
+										</span>
+									</div>
+									<div class="row">
+										
+										<div class="col-sm-6 m-b30">
+											<label class="form-label">Nombre<span class="text-danger">*</span></label>
+											{{form.nombre}}
+										</div>
+										<div class="col-sm-6 m-b30">
+											<label class="form-label">Apellido<span class="text-danger">*</span></label>
+											{{form.apellido}}
+										</div>
+										<div class="col-sm-6 m-b30">
+											<label class="form-label">Departamento<span class="text-danger">*</span></label>
+											{{form.departamento}}
+										</div>
+										<div class="col-sm-6 m-b30">
+											<label class="form-label">Telefono<span class="text-danger">*</span></label>
+											{{form.telefono}}
+										</div>
+										<div class="col-sm-6 m-b30">
+											<label class="form-label">Cargo<span class="text-danger">*</span></label>
+											{{form.cargo}}
+										</div>
+										<div class="col-sm-6 m-b30">
+											<label class="form-label">Fecha nacimiento<span class="text-danger">*</span></label>
+											{{empleado.fecha_nacimiento|date:"d/m/Y"}}
+											{{form.fecha_nacimiento}}
+										</div>
+										<div class="col-sm-6 m-b30">
+											<label class="form-label">Correo<span class="text-danger">*</span></label>
+											{{form.correo_electronico}}
+										</div>
+										<div class="col-sm-6 m-b30">
+											<label class="form-label">Direccion<span class="text-danger">*</span></label>
+											{{form.direccion}}
+										</div>
+										<div class="col-sm-6 m-b30">
+											<label class="form-label">Genero<span class="text-danger">*</span></label>
+											{{form.genero}}
+										</div>
+										<div class="col-xl-12 mb-3">
+											<label class="form-label">Imagen<span class="text-danger">*</span></label>
+											{{form.imageEmp}}
+										</div>
+									</div>
+								<div class="card-footer right">
+									<div class="col-xl-12 mb-3">
+										<button type="Submit" class="btn btn-primary">Modificar</button>
+										<a  href="{% url 'inicio' %}" class="btn btn-danger" >Cancelar</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+            </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+{% endblock %}

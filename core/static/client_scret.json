@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "agroweb-318509",
+  "private_key_id": "f61918f235502ed0c8878b8037fc0ad6a86e321e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCf1AtRn5/f+xpv\nUvciBM/sJfzB3z5IBXEbJMHv8iXAMmH0q/j88hbxWqIIqs699syYkKrvh8dAlTB9\nDtOcqyCPFyRcp6BABUzOFH10xnlfSNjlxOm713URUvXnN9kF/Ko8oevf3CZ+je/j\nxedQ4yeYjI0S1cYVrZLR50+k6YIjz/TqIfAGeCNx0hdT4HFfWATyfnLpbZm2zpm7\nEmQlpYb1s+HiEo4ptDIPspqPa/S+qRQgE1Yk3bdG8qmLxuFenDTzv6Bff27lkxaM\nOjFi1nLSrFHsjvvPD6BYWhw61enDfxd7PF15H0P116b6wVTT8WrUXoA1GpVRiJi2\nv+ernXIRAgMBAAECggEAAQ7Md2EU1Azrpx53s8Iv5Rp4Qok5do0Qq1MSNIYYAV5j\n/xRPTM9GXxkQNvn4bdHvFzhn5TdzFmaWYFGDjYcla0UGMNXMLfhLApcooGf64CpR\ngy3LNTrPE8sGhR39wfgi4U1aDAx/Nbm3Q3zpE8Q5HB2cBmqjSbvxG5IKGSeRfK6u\nOhEkQrm/WWryDOY9XLPL/xKD9qusUF0s1nrh1lIGqKe5MKyp1sc7QU40HGsOWFN+\nrkbXIpCy+wF9AAlywzAIhOouT2Bbeutk8kf8tcfyPdi2kE+tpaqe7DrurrY7Hy1Q\nxF8cED6+lMrOxTs+W3NQHj4nebG2zRv5FcwiKTwLhQKBgQDeLJ1M+xPka8HQciT6\nJo5SFSD2bWrp2XKnGAJXwBk56DsnrwWI9WXpX4mDVFfA+itIll18AJt6xRQe7USC\n6XdcU6cK67TdsLzI38/k4SNqJ9u1I8hM91axwuKPCFDHo/Iy1qme2fYavHqiWj3s\nlh10OCtqmEUAckdWmD1DVDIwfQKBgQC4KXSCElJZMK3hKdxc2DIx1dVGqo5HYIm3\nhnSjXmYZAgg814Iq3TWfktKHJlLBfElDVg4jrW5TswWjilNFcPxLmQsGJaNnSUXu\nQJhW+NPsm38R7Mh6aAQhSBaplufLkMIxHHT6UV4WKx3UWtx5r30pxvnaiM2d1FJo\nLNdcRGkwJQKBgBtkRMCI9Brlbi/U4to0hrd4A2hedR//vzL6ss8+z91j1GdAHN6V\n4sqzDLE0ZN1V+qAoab4wFPs98Q0fE6NQRXcMmTuvc80hTSU28tq1JzifUWcz0i4r\nEHU6IdSgodT7UZETBjafiMgjFLuPhLL2jwsVIcUyoM89R65VdrgmWUnBAoGBAKTf\nsEf3ATSKaVFJOdkBUUbeitd+QGzUl9bvkCLmk39WG2vlAMtBSg2307VdcP96NtkL\nBROZ5EkY4DZ+03g65BUGSiFRtw30QqA/wmMy2ABfYg75Lq6vyurE8E0aJiFQUxrG\nwE+OYy5zoXwJcJOcsfCiC/RDP9pKSRCs/I3FTWrlAoGBAJa6EdJ/XUzNN2+bCV+I\nsIhK8AkmiGKiIT9e6/e9TGERnKoa21wyOrtnUMYvuURH//MqxRvdnZR8xpdosz9J\nIO5K8ZfmE2Is0moffArGBMkzNq/+aKOEHOTWWpsXCTdp53NFHCICXRaOnzCAPph0\n1Xy+jkjaILgdYiI4jwU1Yewq\n-----END PRIVATE KEY-----\n",
+  "client_email": "lhingenieriaspa@agroweb-318509.iam.gserviceaccount.com",
+  "client_id": "110911041074800766845",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lhingenieriaspa%40agroweb-318509.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,173 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{%block content %}
+<div class="page-titles">
+    <ol class="breadcrumb">
+        <li><h5 class="bc-title">Proveedores</h5></li>
+        <li class="breadcrumb-item"><a href="{% url 'inicio' %}">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Portal</a>
+        </li>
+        <li class="breadcrumb-item active"><a href="javascript:void(0)">Proveedores</a></li>
+    </ol>
+</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="table-responsive active-projects style-1 attendance-tbl">
+                            <div class="tbl-caption">
+								<h4 class="heading mb-0">Proveedores</h4>
+							
+									<a style="" type="button" class=" btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+										+ Agregar Proveedor
+									</a>
+									<!-- 
+										<a href="javascript:void(0)" class="btn btn-primary btn-sm"data-bs-toggle="modal" data-bs-target="#offcanvasExample">+ Add Employee</a>-->
+										<!-- Button trigger modal -->	
+                                </div>
+								<table id="attendance-tbl" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOMBRE EMPRESA</th>
+                                        <th>CORREO ELECTRONICO</th>
+                                        <th>TELEFONO</th>
+                                        <th>DIRECCION</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for x in proveedores %}
+                                    <tr>
+                                        
+                                        <td>
+                                            <span>{{x.id_proveedor}}
+                                        </td>
+                                        <td> 
+                                            <a href="{% url 'proveedor-detail' x.id_proveedor %}">
+                                            <span>{{x.nombre_empresa}}</span>	
+                                            </a>
+                                        </td>
+                                        <td><span class="text-primary">{{x.correo_electronico}}</span></td>
+                                        <td><span>{{x.telefono}}</span></td>
+                                        <td>
+                                            {{x.direccion}}
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'proveedor-update' x.id_proveedor %}">
+                                                <span class="badge bg-primary light border-0">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.7476 20.4429H21.0002" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.78 3.79479C13.5557 2.86779 14.95 2.73186 15.8962 3.49173C15.9485 3.53296 17.6295 4.83879 17.6295 4.83879C18.669 5.46719 18.992 6.80311 18.3494 7.82259C18.3153 7.87718 8.81195 19.7645 8.81195 19.7645C8.49578 20.1589 8.01583 20.3918 7.50291 20.3973L3.86353 20.443L3.04353 16.9723C2.92866 16.4843 3.04353 15.9718 3.3597 15.5773L12.78 3.79479Z" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M11.021 6.00092L16.4732 10.188" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg></span>
+                                            </a>
+                                            
+                                            <a href="{% url 'proveedor-delete' x.id_proveedor %}">
+                                                <span class="badge bg-primary light border-0">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19.3248 9.4682C19.3248 9.4682 18.7818 16.2032 18.4668 19.0402C18.3168 20.3952 17.4798 21.1892 16.1088 21.2142C13.4998 21.2612 10.8878 21.2642 8.27979 21.2092C6.96079 21.1822 6.13779 20.3782 5.99079 19.0472C5.67379 16.1852 5.13379 9.4682 5.13379 9.4682" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M20.708 6.23969H3.75" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M17.4406 6.23967C16.6556 6.23967 15.9796 5.68467 15.8256 4.91567L15.5826 3.69967C15.4326 3.13867 14.9246 2.75067 14.3456 2.75067H10.1126C9.53358 2.75067 9.02558 3.13867 8.87558 3.69967L8.63258 4.91567C8.47858 5.68467 7.80258 6.23967 7.01758 6.23967" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-center">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel1">Agregar Proveedor</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <form class="col-md"  method="POST">
+                            {% csrf_token %}
+                            
+
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <label class="mt-3 invite">Nombre Empresa<span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                    {{form.nombre_empresa}}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <label class="mt-3 invite">Correo electronico<span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                    <input type="email" id="id_email" {{form.correo_electronico}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <label class="mt-3 invite">Telefono<span class="text-danger">*</span></label>
+                                    {{form.telefono}}
+                                </div>
+                                <div class="col-xl-6">
+                                    <label class="mt-3 invite">Dirección<span class="text-danger">*</span></label>
+                                    {{form.direccion}}
+                                </div>
+                            </div>
+                            </div>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="Submit" class="btn btn-primary">Guardar Proveedor</button>
+                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Cancelar</button>	
+            </form>
+            </div>
+        </div>
+        </div>
+
+
+{% endblock %}
+
+{% block js %}
+<script>
+    function validarCorreo() {
+        var correo = document.getElementById('id_email').value;  // Obtén el valor del campo de correo electrónico
+
+        // Expresión regular para validar el correo electrónico sin la letra 'ñ'
+        var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!regex.test(correo)) {
+            // El correo electrónico no cumple con el formato permitido
+            alert('Correo electrónico no válido. Por favor, ingrese una dirección de correo válida.');
+            return false;  // Evita que el formulario se envíe
+        }
+
+        if (correo.includes('ñ')) {
+            // La letra 'ñ' no está permitida en las direcciones de correo electrónico
+            alert("La letra 'ñ' no está permitida en las direcciones de correo electrónico.");
+            return false;  // Evita que el formulario se envíe
+        }
+
+        // El correo electrónico es válido
+        return true;  // Permite que el formulario se envíe
+    }
+</script>
+{% endblock %}

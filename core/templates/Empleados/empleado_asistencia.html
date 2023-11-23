@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Asistencia</title>
+</head>
+<body>
+    <h1>Registro de Asistencia</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.empleado }}
+        {{ form.fecha_entrada }}
+        {{ form.fecha_salida }}
+        <button type="submit">Registrar Asistencia</button>
+    </form>
+    
+    <h2>Lista de Empleados</h2>
+    <ul>
+        {% for asistencia in asistencia %}
+        <li>
+        <p>Empleado: {{asistencia.empleado.nombre}}</p>
+            
+        </li>
+        <li>
+            <p>Entrada: {{asistencia.fecha_entrada}}</p>
+            </li>
+            <li>
+            <p>Salida: {{asistencia.fecha_salida}}</p>
+            </li>
+
+            <h1>----------------------------------------------------</h1>
+        {% endfor %}
+    </ul>
+</body>
+</html>

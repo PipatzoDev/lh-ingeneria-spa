@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Asistencia</title>
+</head>
+<body>
+    <h1>Registro de Asistencia</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrar Asistencia</button>
+    </form>
+    
+    <h2>Lista de Empleados</h2>
+    <ul>
+        {% for empleado in empleados %}
+            <li>{{ empleado }} - Última asistencia: {{ empleado.attendance_set.latest.date }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{%block content %}
+<div class="container-fluid">
+    <div class="col-xl-9 col-xxl-8">
+        <div class="card">
+            <div class="card-body p-5">
+                <form method="post">
+                    {% csrf_token %}
+                <h2>Modificando Informacion del Proveedor</h2>
+                <div class="col-sm-6 m-b30">
+                    <label class="form-label">Nombre Empresa: <span class="text-danger">*</span></label>
+                    {{form.nombre_empresa}} 
+                </div>
+                <div class="col-sm-6 m-b30">
+                    <label class="form-label">Correo Electronico: <span class="text-danger">*</span></label>
+                    <input type="email" id="id_email" {{form.correo_electronico}}
+                </div>
+                <div class="col-sm-6 m-b30">
+                    <label class="form-label">Telefono: <span class="text-danger">*</span></label>
+                    {{form.telefono}}
+                </div>
+                <div class="col-sm-6 m-b30">
+                    <label class="form-label">Dirección: <span class="text-danger">*</span></label>
+                    {{form.direccion}} 
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary m-2">Modificar Proveedor</button>
+                <a type="button" class="btn btn-danger" href="{% url 'proveedor' %}">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    function validarCorreo() {
+        var correo = document.getElementById('id_email').value;  // Obtén el valor del campo de correo electrónico
+
+        // Expresión regular para validar el correo electrónico sin la letra 'ñ'
+        var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!regex.test(correo)) {
+            // El correo electrónico no cumple con el formato permitido
+            alert('Correo electrónico no válido. Por favor, ingrese una dirección de correo válida.');
+            return false;  // Evita que el formulario se envíe
+        }
+
+        if (correo.includes('ñ')) {
+            // La letra 'ñ' no está permitida en las direcciones de correo electrónico
+            alert("La letra 'ñ' no está permitida en las direcciones de correo electrónico.");
+            return false;  // Evita que el formulario se envíe
+        }
+
+        // El correo electrónico es válido
+        return true;  // Permite que el formulario se envíe
+    }
+</script>
+{% endblock %}

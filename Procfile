@@ -1,0 +1,1 @@
+web: python manage.py && gunicorn lh_web_interna.wsgi

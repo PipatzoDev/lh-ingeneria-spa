@@ -1,0 +1,548 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<!--**********************************
+	Content body Start
+***********************************-->
+
+<!-- row -->	
+<div class="page-titles">
+	<ol class="breadcrumb">
+		<li><h5 class="bc-title">Inicio</h5></li>
+		<li class="breadcrumb-item"><a href="{% url 'inicio' %}">
+			<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+			Portal </a>
+		</li>
+		<li class="breadcrumb-item active"><a href="javascript:void(0)">Inicio</a></li>
+	</ol>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xl-9 col-xxl-8">
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="card">
+						<div class="card-body p-0">
+							<div class="table-responsive active-projects style-1 attendance-tbl">
+								<div class="tbl-caption">
+									<h4 class="heading mb-0">Empleados</h4>
+							
+									
+										<a style="" type="button" class=" btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+											+ Agregar Empleado
+										</a>
+										<!-- 
+										<a href="javascript:void(0)" class="btn btn-primary btn-sm"data-bs-toggle="modal" data-bs-target="#offcanvasExample">+ Add Employee</a>-->
+										<!-- Button trigger modal -->	
+								</div>
+								<table id="tabla-empleados" class="table table-hover ">
+									<thead>
+										<tr>
+											<th>Rut</th>
+											<th>Nombre Empleado</th>
+											<th>Genero</th>
+											<th>Cargo</th>
+											<th>Departamento</th>
+											<th>Correo</th>
+											<th>Teléfono</th>
+											<th>Dirección</th>
+											<th>Fecha de Nacimiento</th>
+											<th>Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for empleado in empleado %}
+										<tr>
+											<td><span>{{empleado.rut}}</span></td>
+											<td>
+												<div class="products">
+													{% if empleado.imageEmp.url is not None %}
+													<img src="{{ empleado.imageEmp.url }}" class="avatar avatar-md" alt="">
+													{% else %}
+													<img src="{% static 'images/contacts/pic2.jpg'%}" class="avatar avatar-md" alt="">
+													{% endif %}
+													<div>
+														<a href="{{ empleado.get_absolute_url }}">
+														<h6>{{empleado.nombre}}</h6>
+														</a>
+														
+														<span>{{empleado.apellido}}</span>	
+													</div>	
+												</div>
+											</td>
+											<td>
+												<span>{{empleado.genero}}</span>
+											</td>
+											<td>
+												<span>{{empleado.cargo}}</span>
+											</td>	
+											<td><span>{{empleado.departamento}}</span></td>
+											<td><span class="text-primary">{{empleado.correo_electronico}}</span></td>
+											<td>
+												<span>{{empleado.telefono}}</span>
+											</td>
+											<td>
+												<span>{{empleado.direccion}}</span>
+											</td>
+											<td>
+												<span>{{empleado.fecha_nacimiento}}</span>
+											</td>
+											<td>
+												<a href="{% url 'empleado-update' empleado.rut %}">
+													<span class="badge bg-primary light border-0">
+													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M13.7476 20.4429H21.0002" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M12.78 3.79479C13.5557 2.86779 14.95 2.73186 15.8962 3.49173C15.9485 3.53296 17.6295 4.83879 17.6295 4.83879C18.669 5.46719 18.992 6.80311 18.3494 7.82259C18.3153 7.87718 8.81195 19.7645 8.81195 19.7645C8.49578 20.1589 8.01583 20.3918 7.50291 20.3973L3.86353 20.443L3.04353 16.9723C2.92866 16.4843 3.04353 15.9718 3.3597 15.5773L12.78 3.79479Z" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+													<path d="M11.021 6.00092L16.4732 10.188" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+													</svg></span>
+												</a>
+												
+												<a href="{% url 'empleado-delete' empleado.rut %}">
+													<span class="badge bg-primary light border-0">
+													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M19.3248 9.4682C19.3248 9.4682 18.7818 16.2032 18.4668 19.0402C18.3168 20.3952 17.4798 21.1892 16.1088 21.2142C13.4998 21.2612 10.8878 21.2642 8.27979 21.2092C6.96079 21.1822 6.13779 20.3782 5.99079 19.0472C5.67379 16.1852 5.13379 9.4682 5.13379 9.4682" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+													<path d="M20.708 6.23969H3.75" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+													<path d="M17.4406 6.23967C16.6556 6.23967 15.9796 5.68467 15.8256 4.91567L15.5826 3.69967C15.4326 3.13867 14.9246 2.75067 14.3456 2.75067H10.1126C9.53358 2.75067 9.02558 3.13867 8.87558 3.69967L8.63258 4.91567C8.47858 5.68467 7.80258 6.23967 7.01758 6.23967" stroke="#FDFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+													</svg></span>
+												</a>
+											</td>
+											{% endfor %}
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+                <div class="row">
+				<div class="col-xl-12">
+					<div class="card">
+						<div class="card-body p-0">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-xl-3  col-sm-6 mb-3 mb-xl-0">
+										<form method="get" id="formbuscarasistencia" action="{% url 'buscarasistencia' %}">
+											{% csrf_token %}
+											<select name="mes" id="mes" class="form-control default-select dashboard-select-2 h-auto wide" aria-label="Default select example">
+												<option value="1"{% if mes_actual == 1 %}selected{% endif %}>Enero</option>
+												<option value="2"{% if mes_actual == 2 %}selected{% endif %}>Febrero</option>
+												<option value="3"{% if mes_actual == 3 %}selected{% endif %}>Marzo</option>
+												<option value="4"{% if mes_actual == 4 %}selected{% endif %}>Abril</option>
+												<option value="5"{% if mes_actual == 5 %}selected{% endif %}>Mayo</option>
+												<option value="6"{% if mes_actual == 6 %}selected{% endif %}>Junio</option>
+												<option value="7"{% if mes_actual == 7 %}selected{% endif %}>Julio</option>
+												<option value="8"{% if mes_actual == 8 %}selected{% endif %}>Agosto</option>
+												<option value="9"{% if mes_actual == 9 %}selected{% endif %}>Septiembre</option>
+												<option value="10"{% if mes_actual == 10 %}selected{% endif %}>Octubre</option>
+												<option value="11"{% if mes_actual == 11 %}selected{% endif %}>Noviembre</option>
+												<option value="12"{% if mes_actual == 12 %}selected{% endif %}>Diciembre</option>
+											</select>
+									</div>
+									<div class="col-xl-3 col-sm-6">
+										<input type="year" class="form-control mb-xl-0 mb-3" name="anio" id="anio"  value="{{anio_actual|striptags|linebreaksbr }}" >
+									</div>
+									<div class="col-xl-3 col-sm-6">
+										<button class="btn btn-info" title="Click here to Search" type="submit"><i class="fa fa-search me-1"></i>Buscar</button>
+									</div>
+								</form>
+								</div>
+							</div>
+							<hr>
+							
+							<div class="table-responsive active-projects style-1 attendance-tbl">
+							<div class="tbl-caption" >
+								<h4 class="heading mb-0">Asistencia</h4>
+								<a  type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+								+ Registrar Asistencia
+								</a> 
+							</div>
+							<table id="attendance-tbl" class="table table-hover">
+								<thead>
+									<tr>
+										<th>
+											Rut
+										</th>
+										<th>
+											Nombre Empleado
+										</th>
+										{% for day in table_data.0 %}
+										{% if day.1 %}
+											<th><span>{{ day.1 }}</span>
+												<span class="text-primary">
+											{% if day.0 == "Monday"%}
+												<p>Lu</p></th>
+											{% elif  day.0 == "Tuesday" %}
+												<p>Ma</p></th>
+											{% elif  day.0 == "Wednesday" %}
+												<p>Mi</p></th>
+											{% elif  day.0 == "Thursday" %}
+												<p>Ju</p></th>
+											{% elif  day.0 == "Friday" %}
+												<p>Vi</p></th>
+											{% elif  day.0 == "Saturday" %}
+												<p>Sa</p></th>
+											{% elif  day.0 == "Sunday" %}
+												<p>Do</p></th>
+											{% endif %}
+												</span>
+										{% endif%}
+										{% endfor %}
+										{% for day in table_data.1 %}
+											<th><span>{{ day.1 }}</span>
+												<span class="text-primary">
+											{% if day.0 == "Monday"%}
+												<p>Lu</p></th>
+											{% elif  day.0 == "Tuesday" %}
+												<p>Ma</p></th>
+											{% elif  day.0 == "Wednesday" %}
+												<p>Mi</p></th>
+											{% elif  day.0 == "Thursday" %}
+												<p>Ju</p></th>
+											{% elif  day.0 == "Friday" %}
+												<p>Vi</p></th>
+											{% elif  day.0 == "Saturday" %}
+												<p>Sa</p></th>
+											{% elif  day.0 == "Sunday" %}
+												<p>Do</p></th>
+											{% endif %}
+												</span>
+										{% endfor %}
+										{% for day in table_data.2 %}
+											<th><span>{{ day.1 }}</span>
+												<span class="text-primary">
+											{% if day.0 == "Monday"%}
+												<p>Lu</p></th>
+											{% elif  day.0 == "Tuesday" %}
+										   <p>Ma</p></span></th>
+											{% elif  day.0 == "Wednesday" %}
+												<p>Mi</p></th>
+											{% elif  day.0 == "Thursday" %}
+												<p>Ju</p></th>
+											{% elif  day.0 == "Friday" %}
+												<p>Vi</p></th>
+											{% elif  day.0 == "Saturday" %}
+												<p>Sa</p></th>
+											{% elif  day.0 == "Sunday" %}
+												<p>Do</p></th>
+											{% endif %}
+												</span>
+										{% endfor %}
+										{% for day in table_data.3 %}
+											<th><span>{{ day.1 }}</span>
+												<span class="text-primary">
+											{% if day.0 == "Monday"%}
+												<p>Lu</p></th>
+											{% elif  day.0 == "Tuesday" %}
+												<p>Ma</p></th>
+											{% elif  day.0 == "Wednesday" %}
+												<p>Mi</p></th>
+											{% elif  day.0 == "Thursday" %}
+												<p>Ju</p></th>
+											{% elif  day.0 == "Friday" %}
+												<p>Vi</p></th>
+											{% elif  day.0 == "Saturday" %}
+												<p>Sa</p></th>
+											{% elif  day.0 == "Sunday" %}
+												<p>Do</p></th>
+											{% endif %}
+												</span>
+										{% endfor %}
+										{% for day in table_data.4 %}
+										{% if day.1 %}
+											<th><span>{{ day.1 }}</span>
+												<span class="text-primary">
+											{% if day.0 == "Monday"%}
+											<p>Lu</p></th>
+											{% elif  day.0 == "Tuesday" %}
+												<p>Ma</p></th>
+											{% elif  day.0 == "Wednesday" %}
+												<p>Mi</p></th>
+											{% elif  day.0 == "Thursday" %}
+												<p>Ju</p></th>
+											{% elif  day.0 == "Friday" %}
+												<p>Vi</p></th>
+											{% elif  day.0 == "Saturday" %}
+												<p>Sa</p></th>
+											{% elif  day.0 == "Sunday" %}
+												<p>Do</p></th>
+											{% endif %}
+												</span>
+										{% endif%}
+										{% endfor %}
+										{% for day in table_data.5 %}
+										{% if day.1 %}
+											<th><span>{{ day.1 }}</span>
+												<span class="text-primary">
+											{% if day.0 == "Monday"%}
+											<p>Lu</p></th>
+											{% elif  day.0 == "Tuesday" %}
+												<p>Ma</p></th>
+											{% elif  day.0 == "Wednesday" %}
+												<p>Mi</p></th>
+											{% elif  day.0 == "Thursday" %}
+												<p>Ju</p></th>
+											{% elif  day.0 == "Friday" %}
+												<p>Vi</p></th>
+											{% elif  day.0 == "Saturday" %}
+												<p>Sa</p></th>
+											{% elif  day.0 == "Sunday" %}
+												<p>Do</p></th>
+											{% endif %}
+												</span>
+										{% endif%}
+										{% endfor %}
+										
+												<th>Total</th>
+									</tr>
+								</thead>
+								<tbody >
+								
+									{% for fila in tabla_asistencia %}
+									<tr>
+										<td>{{fila.rut}}</td>
+										<td>
+											<div class="products">
+												{% if fila.imagen.url is not None %}
+												<img src="{{ fila.imagen.url }}" class="avatar avatar-md" alt="">
+												{% else %}
+												<img src="{% static 'images/contacts/pic2.jpg'%}" class="avatar avatar-md" alt="">
+												{% endif %}
+									
+									
+												<div>
+													<h6>{{ fila.nombre }}</h6>
+													<span>{{fila.apellido}}</span>	
+												</div>	
+											</div>
+										</td>
+										{% for asistencia in fila.asistencias %}
+										<td>{% if asistencia == '✔' %}
+											<span class="text-success">✔</span>
+											{% elif asistencia == '✘'%}
+											<span class="text-danger">✘</span>
+											{% elif asistencia == 'J'%}
+											<span class="text-primary">J</i></span>
+											{% else %}
+											<span class="text-primary">●</i></span>
+										{% endif %}
+										</td>
+										{% endfor %}
+										<td>{{ fila.dias_asistidos }}</td>
+										
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xl-3 col-xxl-4">
+			<div class="row">
+				<div class="col-xl-12 col-md-6">
+					<div class="card">
+						<div class="card-header border-0">
+							<h4 class="heading mb-0">Calendario</h4>
+						</div>
+						<div class="card-body schedules-cal p-2">
+							<input type="text" class="form-control d-none" id="datetimepicker1">
+							<div class="events">
+								<h6>Eventos Chilenos de este mes</h6>
+								<div class="dz-scroll event-scroll">	
+									{% for event in events %}
+									<div class="event-media">
+										<div class="d-flex align-items-center">
+											<div class="event-box">
+												<h5 class="mb-0">{{event.start|slice:"8:10"}}</h5>
+												<span>{{event.start|slice:"5:7"}}</span>
+											</div>
+											<div class="event-data ms-2">
+												<h5 class="mb-0">{{ event.summary }}</h5>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-center">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Asistencia</h1>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-xl-12">
+				<form method="post">
+					{% csrf_token %}
+					<label class="mt-3 invite">Empleado<span class="text-danger">*</span></label>
+					{{form2.empleado}}
+					<label class="mt-3 invite">Asistencia<span class="text-danger">*</span></label>
+					{{form2.asistencia}}
+					<label class="mt-3 invite">Fecha<span class="text-danger">*</span></label>
+					{{form2.fecha}}
+					<label class="mt-3 invite">Hora Entrada<span class="text-danger">*</span></label>
+					{{form2.hora_entrada}}
+					<label class="mt-3 invite">Hora Salida<span class="text-danger">*</span></label>
+					{{form2.hora_salida}}
+
+			
+					<br><br>
+					
+					
+				
+				
+				</div>
+				
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="Submit" class="btn btn-primary">Guardar Asistencia</button>
+			<button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Cancelar</button>
+		</div>
+	</form>
+	  </div>
+	</div>
+  </div>
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-center">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h1 class="modal-title fs-5" id="exampleModalLabel1">Agregar Empleado</h1>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			  <div class="row">
+				  <div class="col-xl-12">
+					  <form class="col-md" action=""  method="POST" enctype="multipart/form-data">
+						  {% csrf_token %}
+						  
+						  <label class="from-control">Rut<span class="text-danger">*</span></label>
+						   {{form.rut}}
+
+						   <label class="mt-3 invite">Foto de Perfil: <span class="text-option">opcional</span></label>
+						   {{form.imageEmp}}
+						  <div class="row">
+							  <div class="col-xl-6">
+								  <label class="mt-3 invite">Nombre<span class="text-danger">*</span></label>
+								  <div class="input-group">
+								   {{form.nombre}}
+								  </div>
+							  </div>
+							  <div class="col-xl-6">
+								  <label class="mt-3 invite">Apellido<span class="text-danger">*</span></label>
+								  <div class="input-group">
+								  {{form.apellido}}
+								  </div>
+							  </div>
+						  </div>
+						  <div class="row">
+							  <div class="col-xl-6">
+								  <label class="mt-3 invite">Departamento<span class="text-danger">*</span></label>
+								  {{form.departamento}}
+							  </div>
+							  <div class="col-xl-6">
+								  <label class="mt-3 invite">Telefono<span class="text-danger">*</span></label>
+								  {{form.telefono}}
+							  </div>
+						  </div>
+						  <div class="row">
+							  <div class="col-xl-6">
+								  <label class="mt-3 invite">Cargo<span class="text-danger">*</span></label>
+								  {{form.cargo}}
+							  </div>
+							  <div class="col-xl-6">
+								  <label class="mt-3 invite">Fecha de nacimiento<span class="text-danger">*</span></label>
+								 <input type="date" {{form.fecha_nacimiento}}
+							  </div>
+						  </div>
+						  <div class="mt-3 invite">
+							  <label class="mt-3 invite">Correo<span class="text-danger"> (ejemplo@gmail.com)</span></label>
+							  <input type="email" id="id_email" {{form.correo_electronico}}
+						  </div>
+						  <div class="mt-3 invite">
+							  <label class="mt-3 invite">Direccion<span class="text-danger">*</span></label>
+							  {{form.direccion}}
+						  </div>
+						  <div class="col-xl-6">
+							  <label class="mt-3 invite">Genero<span class="text-danger">*</span></label>
+							  {{form.genero}}
+							  <br>
+						  </div>
+						  
+						</div>
+					
+				  </div>
+			  </div>
+			  <div class="modal-footer">
+				  <button type="Submit" class="btn btn-primary">Guardar Empleado</button>
+				  <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Cancelar</button>	
+		  </form>
+		</div>
+	  </div>
+	</div>
+</div>
+
+
+
+<!--**********************************
+	Content body end
+***********************************-->
+
+{% endblock %}
+
+{% block js %}
+<script>
+    function validarCorreo() {
+        var correo = document.getElementById('id_email').value;  // Obtén el valor del campo de correo electrónico
+
+        // Expresión regular para validar el correo electrónico sin la letra 'ñ'
+        var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!regex.test(correo)) {
+            // El correo electrónico no cumple con el formato permitido
+            alert('Correo electrónico no válido. Por favor, ingrese una dirección de correo válida.');
+            return false;  // Evita que el formulario se envíe
+        }
+
+        if (correo.includes('ñ')) {
+            // La letra 'ñ' no está permitida en las direcciones de correo electrónico
+            alert("La letra 'ñ' no está permitida en las direcciones de correo electrónico.");
+            return false;  // Evita que el formulario se envíe
+        }
+
+        // El correo electrónico es válido
+        return true;  // Permite que el formulario se envíe
+    }
+</script>
+<script>
+	document.getElementById("formbuscarasistencia").onsubmit = function(event) {
+		var inputValor = document.getElementById("anio").value;
+		var anioActual = new Date().getFullYear();
+		if (inputValor.trim() === "" || inputValor > anioActual) {
+			alert("El año no puede estar vacío o ingresar un año mayor al actual "+ anioActual);
+			event.preventDefault(); // Evitar que el formulario se envíe
+		}
+		
+	};	
+</script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{%block content %}
+<div class="container-fluid">
+    <div class="col-xl-9 col-xxl-8">
+    <div class="card">
+        <div class="card-body p-5">
+            <h2>¿Estás seguro de que deseas eliminar a {{ proveedor.nombre_empresa}} ?</h2>
+            
+
+            <br>
+            <br>    
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary m-2">Eliminar Proveedor</button>
+                <a type="button" class="btn btn-danger" href="{% url 'proveedor' %}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

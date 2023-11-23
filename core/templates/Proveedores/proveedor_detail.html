@@ -1,0 +1,57 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{%block content %}
+<!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="container-fluid">
+            <!-- row -->
+            <div class="row">
+                <div class="col-xl-9 col-lg-8">
+                    <div class="card profile-card card-bx m-b30">
+                        <div class="card-header">
+                            <h6 class="title">Informacion del Proveedor</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-sm-2 m-b30">
+                                <label class="form-label">ID Proveedor:  <span class="text-danger">: </span></label>
+                                <span class="badge bg-primary  border-0">
+                                    {{proveedor.id_proveedor}}
+                                </span>
+                            </div>
+                            <div class="row">
+                                
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">Nombre Empresa<span class="text-danger">: </span></label>
+                                    {{proveedor.nombre_empresa}}
+                                </div>
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">Correo electronico<span class="text-danger">: </span></label>
+                                    {{proveedor.correo_electronico}}
+                                </div>
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">Telefono<span class="text-danger">: </span></label>
+                                    {{proveedor.telefono}}
+                                </div>
+                                <div class="col-sm-6 m-b30">
+                                    <label class="form-label">Dirección<span class="text-danger">: </span></label>
+                                    {{proveedor.direccion}}
+                                </div>
+                                
+                            </div>
+                        <div class="card-footer right">
+                            <div class="col-xl-12 mb-3">
+                                <a  href="{% url 'proveedor' %}" class="btn btn-danger" >Volver</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+{% endblock %}

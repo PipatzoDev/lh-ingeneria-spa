@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{%block content %}
+<div class="container-fluid">
+    <div class="col-xl-9 col-xxl-8">
+    <div class="card">
+        <div class="card-body p-5">
+            <h2>¿Estás seguro de que deseas eliminar este empleado ?</h2>
+            <span><h5>Rut: {{empleado.rut}}</h5></span>
+            <span><h5>Nombre completo: {{empleado.nombre}} {{empleado.apellido}}</h5></span>
+
+            <br>
+            <br>    
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary m-2">Eliminar empleado</button>
+                <a type="button" class="btn btn-danger" href="{% url 'inicio' %}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
