@@ -82,8 +82,8 @@
                     <div class="col-xl-3  col-lg-6 col-sm-6">
 						<div class="widget-stat card">
 							<div class="card-body p-4">
-								<div class="media ai-icon">
-									<span class="me-3 bgl-primary text-primary">
+								<div  class="media ai-icon">
+									<span  class="me-3    bgl-primary text-primary">
 										<!-- <i class="ti-user"></i> -->
 										<svg id="icon-revenue" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
 											<line x1="12" y1="1" x2="12" y2="23"></line>
@@ -92,8 +92,8 @@
 									</span>
 									<div class="media-body">
 										<p class="mb-1">Total</p>
-										<h4 class="mb-0">{{monto_total}}</h4>
-
+										<h6 class="mb-0">{{monto_total}}</h6>
+                                        
 									</div>
 								</div>
 							</div>
@@ -102,7 +102,7 @@
                     <div class="col-xl-3  col-lg-6 col-sm-6">
                         <div class="widget-stat card">
 							<div class="card-body p-4">
-								<div class="media ai-icon">
+								<div class="media">
 									<span class="me-3 bgl-success text-success">
 										<svg id="icon-revenue" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
 											<line x1="12" y1="1" x2="12" y2="23"></line>
@@ -110,8 +110,8 @@
 										</svg>
 									</span>
 									<div class="media-body">
-										<p class="mb-1">Total Cargos</p>
-										<h4 class="mb-0">{{monto_cargo}}</h4>
+										<p class="mb-1">Total Ingresos</p>
+										<h6 class="mb-0">{{monto_cargo}}</h6>
 									</div>
 								</div>
 							</div>
@@ -129,7 +129,7 @@
 									</span>
 									<div class="media-body">
 										<p class="mb-1">Total Retiros</p>
-										<h4 class="mb-0">{{monto_retiro}}</h4>
+										<h6 class="mb-0">{{monto_retiro}}</h6>
 									</div>
 								</div>
 							</div>
@@ -150,7 +150,7 @@
 									</span>
 									<div class="media-body">
 										<p class="mb-1">Total Depositos</p>
-										<h4 class="mb-0">{{cant}}</h4>
+										<h6 class="mb-0">{{cant}}</h6>
 									</div>
 								</div>
 							</div>
@@ -184,7 +184,7 @@
                                             {{x.id_transaccion}}
                                         </td>
                                         <td>
-                                            {% if x.tipo_transaccion == '(+) Cargo (+)' %}
+                                            {% if x.tipo_transaccion == '(+) Ingreso (+)' %}
                                             <span class="badge light badge-success">{{x.tipo_transaccion}}</span>
                                             {% elif x.tipo_transaccion == '(-) Retiro (-)' %}
                                             <span class="badge light badge-danger">{{x.tipo_transaccion}}</span>

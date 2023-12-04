@@ -50,7 +50,7 @@ class ProveedorForms(forms.ModelForm):
     nombre_empresa = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Nombre Empresa'}))
     correo_electronico = forms.EmailField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Correo Empresa'}))
     telefono = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese Telefono'}))
-    direccion = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese Dirección del Empleado'}))
+    direccion = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese Dirección'}))
 
     
     class Meta:
@@ -76,7 +76,7 @@ class MultipleFileField(forms.FileField):
         return result
     
 class TransaccionForms(forms.ModelForm):
-    select_gender = (('(-) Retiro (-)', '(-) Retiro (-)'),('(+) Cargo (+)', '(+) Cargo (+)'))
+    select_gender = (('(-) Retiro (-)', '(-) Retiro (-)'),('(+) Ingreso (+)', '(+) Ingreso (+)'))
     tipo_transaccion = forms.ChoiceField(choices=select_gender,widget=forms.Select(attrs={'class':'form-control'}))
     fecha_transaccion = forms.DateField(widget=forms.DateInput(attrs={'class':'form-control','type':'Date'}))  
     monto = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','type':'number'}))

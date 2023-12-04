@@ -98,20 +98,20 @@ WSGI_APPLICATION = 'lh_web_interna.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '192.168.1.88:1521/XE',
         'USER': 'system',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'Capstone-23',
         'TEST': {
             'USER': 'default_test',
             'TBLSPACE': 'default_test_tbls',
             'TBLSPACE_TMP': 'default_test_tbls_tmp',
         },
         }
-}"""
-
+}
+"""
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.oracle',
@@ -121,7 +121,17 @@ DATABASES = {
         'HOST': 'database-lh.chzqwlsuqb70.us-east-2.rds.amazonaws.com',
         'PORT': '1521',
         }
-}
+}"""
+"""DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'database',
+        'USER': 'fl0user',
+        'PASSWORD': 'EMFxu3rLKUH7',
+        'HOST': 'ep-proud-math-55144527.us-east-2.aws.neon.fl0.io',  # Puedes cambiarlo si tu base de datos está en otro lugar
+        'PORT': '5432',  # Este es el puerto predeterminado de PostgreSQL
+    }
+}"""
 
 
 # Password validation
