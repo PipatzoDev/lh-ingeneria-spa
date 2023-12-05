@@ -306,7 +306,7 @@ def finanza(request):
     else:
         form = TransaccionForms()
         
-    monto_cargo = Transaccion.objects.filter(tipo_transaccion='(+) Cargo (+)').aggregate(Sum('monto'))['monto__sum']
+    monto_cargo = Transaccion.objects.filter(tipo_transaccion='(+) Ingreso (+)').aggregate(Sum('monto'))['monto__sum']
     monto_retiro = Transaccion.objects.filter(tipo_transaccion='(-) Retiro (-)').aggregate(Sum('monto'))['monto__sum']
     cant = Transaccion.objects.count()
     if monto_retiro and monto_cargo:

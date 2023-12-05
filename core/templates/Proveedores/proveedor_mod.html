@@ -11,19 +11,19 @@
                     {% csrf_token %}
                 <h2>Modificando Informacion del Proveedor</h2>
                 <div class="col-sm-6 m-b30">
-                    <label class="form-label">Nombre Empresa: <span class="text-danger">*</span></label>
+                    <label class="form-label">Nombre Empresa: </label>
                     {{form.nombre_empresa}} 
                 </div>
                 <div class="col-sm-6 m-b30">
-                    <label class="form-label">Correo Electronico: <span class="text-danger">*</span></label>
+                    <label class="form-label">Correo Electronico: </label>
                     <input type="email" id="id_email" {{form.correo_electronico}}
                 </div>
                 <div class="col-sm-6 m-b30">
-                    <label class="form-label">Telefono: <span class="text-danger">*</span></label>
+                    <label class="form-label">Telefono: </label>
                     {{form.telefono}}
                 </div>
                 <div class="col-sm-6 m-b30">
-                    <label class="form-label">Dirección: <span class="text-danger">*</span></label>
+                    <label class="form-label">Dirección: </label>
                     {{form.direccion}} 
                 </div>
                 <br>
